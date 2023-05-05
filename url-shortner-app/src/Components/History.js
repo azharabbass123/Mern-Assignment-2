@@ -8,8 +8,8 @@ function History(){
                     
                         <tr>
                             <th>Id</th>
-                            <th>Long Url</th>
                             <th>Short Url</th>
+                            <th>Long Url</th>
                             <th>expiryDate</th>
                         </tr>
                             
