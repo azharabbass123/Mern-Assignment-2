@@ -1,4 +1,4 @@
-import {useReducer} from "react"
+import {useReducer, useState} from "react"
 import {toast, ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 const InitailValue = {
@@ -35,6 +35,11 @@ function HomePage(){
       value : event.target.value,
     })
   }
+    // function onTextAreaChange({target: {value}}){
+    //   return setValue(value);
+    // }
+  
+    
     const onSubmit = (event) => {
       var states = JSON.parse(localStorage.getItem('Urls') || "[]");
       var previousId = settingId();
@@ -77,12 +82,13 @@ function HomePage(){
            placeholder="Enter expiry date"
          />
        
-       <button className="btn" type="submit" >Short</button>
+       <button className="myPersonelbtn" type="submit" >Short</button>
        <ToastContainer />
-
+      
 
      </form>
         </div>
+        
     )
 }
 export default HomePage;
