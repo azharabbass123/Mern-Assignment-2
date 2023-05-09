@@ -1,17 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
-import {toast, ToastContainer} from 'react-toastify';
-import { Button, FontAwesomeIcon} from "bootstrap";
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 function History(){
     var urlData = JSON.parse(localStorage.getItem('Urls') || '[]');
-    const [deleteState, setDeleteState] = useState(urlData);
-    function onDelete(id) {
-        let urlData1 = deleteState;
-        urlData1 = urlData1.filter((url1) => url1.id !== id);
+    const [deleteState, setDeleteState] = useState ([urlData]);
+    function onDelete(index) {
+        let urlData1 = [...deleteState];
+        urlData1.splice(index, 1);
         setDeleteState(urlData1);
-        localStorage.setItem("Urls", JSON.stringify(urlData1));
+        localStorage.setItem("Urls", JSON.stringify(deleteState));
         // if (ulrData1.length === 0) {
         //   localStorage.removeItem("Urls");
         // }
@@ -55,7 +53,7 @@ function History(){
                                 {/* <td><button className='editButton'>
                                     </button> <ToastContainer />
                                     </td> */}
-                                <td><button className='deleteButton' style={{background: 'red'}} onClick={() => onDelete(index)}>Delete
+                                <td><button className='deleteButton' style={{background: 'red'}} onClick={() =>{onDelete(index)}}>Delete
                                     </button></td>
                             </tr>
                             </>

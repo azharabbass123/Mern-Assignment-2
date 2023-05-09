@@ -2,22 +2,21 @@ import {useReducer, useState} from "react"
 import {toast, ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 const InitailValue = {
-  id: 0,
   longUrl: '',
   shortUrl: '',
   expiryDate: '',
 };
 const message = "Url is shortened successfully please go to hitory page to copy short url.";
 const message2 = "Something went wrong! Please try again with a valid url."
-function settingId(){
-  var oldArray = JSON.parse(localStorage.getItem("Urls") || "[]");
-  for(let i = 0; i < oldArray.length; i++){
-    if(i === (oldArray.length) -1){
-      var lastObject = oldArray[i];
-      return lastObject.id;
-    }
-  }
-}
+// function settingId(){
+//   var oldArray = JSON.parse(localStorage.getItem("Urls") || "[]");
+//   for(let i = 0; i < oldArray.length; i++){
+//     if(i === (oldArray.length) -1){
+//       var lastObject = oldArray[i];
+//       return lastObject.id;
+//     }
+//   }
+// }
 function reducer(state, action){
   switch(action.type){
     case 'changeValue':
@@ -42,8 +41,6 @@ function HomePage(){
     
     const onSubmit = (event) => {
       var states = JSON.parse(localStorage.getItem('Urls') || "[]");
-      var previousId = settingId();
-      state.id = previousId + 1;
       event.preventDefault();
       try{
         let urlOld = state.longUrl;
